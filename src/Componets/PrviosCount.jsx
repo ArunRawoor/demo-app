@@ -34,11 +34,38 @@
 
 
 
-import React from 'react'
+import { React, useState, useEffect } from 'react'
+
 
 function PrviosCount() {
+  const initialValue = 0;
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => {
+    setCount(count + 1)
+  }
+  const increment5 = () => {
+    setCount(count + 5)
+  }
+  const decrement = () => {
+    setCount(count - 1)
+  }
+
+
+ useEffect(() => {
+  console.log("It will Run Every Re - Render",count);
+ },[count])
+ 
   return (
-    <div>PrviosCount</div>
+    <>
+      <h1>Count: {count}</h1>
+
+      <button onClick={increment}>Increment</button>
+      <button onClick={increment5}>Increment5</button>
+
+      <button onClick={decrement}>Decrement</button>
+
+    </>
   )
 }
 
